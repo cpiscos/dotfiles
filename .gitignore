@@ -1,2 +1,4 @@
 .git/
-./ags/.config/ags/types/
+*/ags/types/
+*/ags/node_modules/
+*/package-lock.json
