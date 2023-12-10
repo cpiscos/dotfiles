@@ -1,0 +1,1 @@
+paru -U https://archive.archlinux.org/packages/l/lib32-nvidia-utils/lib32-nvidia-utils-535.113.01-1-x86_64.pkg.tar.zst https://archive.archlinux.org/packages/n/nvidia-dkms/nvidia-dkms-535.113.01-2-x86_64.pkg.tar.zst https://archive.archlinux.org/packages/n/nvidia-utils/nvidia-utils-535.113.01-2-x86_64.pkg.tar.zst
