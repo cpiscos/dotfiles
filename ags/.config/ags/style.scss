@@ -1,0 +1,57 @@
+* {
+  font-family: monospace;
+  margin: 0px;
+  // font-size: 1.25em;
+}
+
+window {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  // background: transparent;
+}
+
+// .end-widget {
+//   margin-right: 20px;
+// }
+
+.workspace-button {
+  padding: 0px;
+  // min-width: 18px;
+  // min-height: 18px;
+  margin: 0;
+  background: transparent;
+  border-color: transparent;
+  transition: none;
+}
+
+.active {
+  // font-family: 'Font Awesome 5 Free Solid';
+  font-weight: 900;
+}
+
+.icon {
+  min-width: 32px;
+  // background: black;
+}
+
+.start-widget {
+  margin-left: 10px;
+}
+
+.end-widget {
+  margin-right: 10px;
+}
+
+// .time, .date {
+  // font-size: 20px;
+  // black and white minimalist font
+  // font-family: 'Font Awesome 5 Free Regular';
+// }
+
+// .date, .time, .idle_inhibitor {
+//   padding: 10px 0px;
+// }
+// .idle_inhibitor {
+//   padding: 10px 0px;
+// }

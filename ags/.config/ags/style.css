@@ -1,0 +1,27 @@
+* {
+  font-family: monospace;
+  margin: 0px; }
+
+window {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px; }
+
+.workspace-button {
+  padding: 0px;
+  margin: 0;
+  background: transparent;
+  border-color: transparent;
+  transition: none; }
+
+.active {
+  font-weight: 900; }
+
+.icon {
+  min-width: 32px; }
+
+.start-widget {
+  margin-left: 10px; }
+
+.end-widget {
+  margin-right: 10px; }

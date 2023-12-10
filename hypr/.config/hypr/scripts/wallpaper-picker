@@ -1,0 +1,14 @@
+#!/bin/bash
+#vim: set ft=sh:
+
+WALLPAPER_DIR="$HOME/Pictures/wallpapers"
+
+SELECTED_WALLPAPER=$(exa -f "$WALLPAPER_DIR" | rofi -dmenu -p "Choose a wallpaper" -config ~/.cache/wal/colors-rofi-dark.rasi)
+
+
+if [ -n "$SELECTED_WALLPAPER" ]; then
+  WALLPAPER_PATH="$WALLPAPER_DIR/$SELECTED_WALLPAPER"
+  swww img "$WALLPAPER_PATH"
+
+  wal -i "$WALLPAPER_PATH"
+fi
