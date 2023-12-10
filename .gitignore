@@ -1,4 +1,4 @@
 .git/
-*/ags/types/*
-*/ags/node_modules/*
-*/package-lock.json
+**/ags/types/
+**/ags/node_modules/
+**/package-lock.json
