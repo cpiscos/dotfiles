@@ -11,6 +11,7 @@ alias ls=exa
 alias la="exa -a"
 alias stow="stow --ignore='^(\.git|\.misc)$'"
 alias r="ranger"
+alias lg="lazygit"
 alias wev="kitty wev"
 function man() {
     socketed_neovide.sh -c ":silent enew | silent Man $* | only"
