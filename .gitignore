@@ -3,3 +3,4 @@
 **/ags/node_modules/
 **/package-lock.json
 **/lazy-lock.json
+**/neovide_backtraces.log
