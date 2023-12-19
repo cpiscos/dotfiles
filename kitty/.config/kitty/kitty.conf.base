@@ -1,6 +1,6 @@
-# vim:fileencoding=utf-8:foldmethod=marker
+# vim:fileencoding=utf-8:foldmethod=marker:ft=kitty
 
-#: Fonts {{{
+#: Fonts {{{{{{
 
 #: kitty has very powerful font management. You can configure
 #: individual font faces and even specify special fonts for particular
@@ -246,11 +246,11 @@ font_size 12.0
 #: problem try setting text_fg_override_threshold to 0 to see if this
 #: is the cause of the problem.
 
-#: }}}
+#: }}}}}}
 
-#: Cursor customization {{{
+#: Cursor customization {{{{{{
 
-cursor #e0f9ff
+cursor {color15}
 
 #: Default cursor color. If set to the special value none the cursor
 #: will be rendered with a "reverse video" effect. It's color will be
@@ -297,9 +297,9 @@ cursor #e0f9ff
 #: Stop blinking cursor after the specified number of seconds of
 #: keyboard inactivity. Set to zero to never stop blinking.
 
-#: }}}
+#: }}}}}}
 
-#: Scrollback {{{
+#: Scrollback {{{{{{
 
 # scrollback_lines 2000
 
@@ -366,9 +366,9 @@ cursor #e0f9ff
 #: platforms such as macOS and Wayland. Use negative numbers to change
 #: scroll direction.
 
-#: }}}
+#: }}}}}}
 
-#: Mouse {{{
+#: Mouse {{{{{{
 
 # mouse_hide_wait 3.0
 
@@ -520,7 +520,7 @@ cursor #e0f9ff
 
 #: The default shape of the mouse pointer when dragging across text.
 
-#: Mouse actions {{{
+#: Mouse actions {{{{{{
 
 #: Mouse buttons can be mapped to perform arbitrary actions. The
 #: syntax is:
@@ -676,11 +676,11 @@ cursor #e0f9ff
 #::  Requires shell integration
 #::  <https://sw.kovidgoyal.net/kitty/shell-integration/> to work.
 
-#: }}}
+#: }}}}}}
 
-#: }}}
+#: }}}}}}
 
-#: Performance tuning {{{
+#: Performance tuning {{{{{{
 
 # repaint_delay 10
 
@@ -709,9 +709,9 @@ cursor #e0f9ff
 #: monitor. With a very high speed mouse/high keyboard repeat rate,
 #: you may notice some slight input latency. If so, set this to no.
 
-#: }}}
+#: }}}}}}
 
-#: Terminal bell {{{
+#: Terminal bell {{{{{{
 
 enable_audio_bell false
 
@@ -766,9 +766,9 @@ enable_audio_bell false
 #: be removed if Linux ever provides desktop-agnostic support for
 #: setting system sound themes.
 
-#: }}}
+#: }}}}}}
 
-#: Window layout {{{
+#: Window layout {{{{{{
 
 # remember_window_size  yes
 # initial_window_width  640
@@ -851,16 +851,16 @@ enable_audio_bell false
 #: placed centrally. A value of top-left means the padding will be
 #: only at the bottom and right edges.
 
-active_border_color #e0f9ff
+active_border_color {color15}
 
 #: The color for the border of the active window. Set this to none to
 #: not draw borders around the active window.
 
-inactive_border_color #0B1219
+inactive_border_color {color0}
 
 #: The color for the border of inactive windows.
 
-bell_border_color #B1525F
+bell_border_color {color1}
 
 #: The color for the border of inactive windows in which a bell has
 #: occurred.
@@ -947,9 +947,9 @@ confirm_os_window_close 0
 #: want confirmation when closing individual windows, you can map the
 #: close_window_with_confirmation action.
 
-#: }}}
+#: }}}}}}
 
-#: Tab bar {{{
+#: Tab bar {{{{{{
 
 # tab_bar_edge bottom
 
@@ -1042,13 +1042,13 @@ confirm_os_window_close 0
 #: The maximum number of cells that can be used to render the text in
 #: a tab. A value of zero means that no limit is applied.
 
-# tab_title_template "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{title}"
+# tab_title_template "{{fmt.fg.red}}{{bell_symbol}}{{activity_symbol}}{{fmt.fg.tab}}{{title}}"
 
 #: A template to render the tab title. The default just renders the
 #: title with optional symbols for bell and activity. If you wish to
-#: include the tab-index as well, use something like: {index}:{title}.
+#: include the tab-index as well, use something like: {{index}}:{{title}}.
 #: Useful if you have shortcuts mapped for goto_tab N. If you prefer
-#: to see the index as a superscript, use {sup.index}. All data
+#: to see the index as a superscript, use {{sup.index}}. All data
 #: available is:
 
 #: title
@@ -1073,15 +1073,15 @@ confirm_os_window_close 0
 #:     The maximum title length available.
 
 #: Note that formatting is done by Python's string formatting
-#: machinery, so you can use, for instance, {layout_name[:2].upper()}
+#: machinery, so you can use, for instance, {{layout_name[:2].upper()}}
 #: to show only the first two letters of the layout name, upper-cased.
 #: If you want to style the text, you can use styling directives, for
 #: example:
-#: `{fmt.fg.red}red{fmt.fg.tab}normal{fmt.bg._00FF00}greenbg{fmt.bg.tab}`.
+#: `{{fmt.fg.red}}red{{fmt.fg.tab}}normal{{fmt.bg._00FF00}}greenbg{{fmt.bg.tab}}`.
 #: Similarly, for bold and italic:
-#: `{fmt.bold}bold{fmt.nobold}normal{fmt.italic}italic{fmt.noitalic}`.
-#: Note that for backward compatibility, if {bell_symbol} or
-#: {activity_symbol} are not present in the template, they are
+#: `{{fmt.bold}}bold{{fmt.nobold}}normal{{fmt.italic}}italic{{fmt.noitalic}}`.
+#: Note that for backward compatibility, if {{bell_symbol}} or
+#: {{activity_symbol}} are not present in the template, they are
 #: prepended to it.
 
 # active_tab_title_template none
@@ -1089,11 +1089,11 @@ confirm_os_window_close 0
 #: Template to use for active tabs. If not specified falls back to
 #: tab_title_template.
 
-active_tab_foreground   #0B1219
-active_tab_background   #e0f9ff
+active_tab_foreground   {color0}
+active_tab_background   {color15}
 # active_tab_font_style   bold-italic
-inactive_tab_foreground #e0f9ff
-inactive_tab_background #0B1219
+inactive_tab_foreground {color15}
+inactive_tab_background {color0}
 # inactive_tab_font_style normal
 
 #: Tab bar colors and styles.
@@ -1110,16 +1110,16 @@ inactive_tab_background #0B1219
 #: margins the default color is chosen to match the background color
 #: of the neighboring tab.
 
-#: }}}
+#: }}}}}}
 
-#: Color scheme {{{
+#: Color scheme {{{{{{
 
-foreground #e0f9ff
-background #0B1219
+foreground {color15}
+background {color0}
 
 #: The foreground and background colors.
 
-background_opacity 0.9
+background_opacity {color0.alpha_dec}
 
 #: The opacity of the background. A number between zero and one, where
 #: one is opaque and zero is fully transparent. This will only work if
@@ -1209,49 +1209,49 @@ background_opacity 0.9
 #: to be used unchanged. Note that these colors can be overridden by
 #: the program running in the terminal.
 
-#: The color table {{{
+#: The color table {{{{{{
 
 #: The 256 terminal colors. There are 8 basic colors, each color has a
 #: dull and bright version, for the first 16 colors. You can set the
 #: remaining 240 colors as color16 to color255.
 
-color0 #0B1219
-color8 #192a3c
+color0 {color0}
+color8 {color8}
 
 #: black
 
-color1 #B1525F
-color9 #f6596f
+color1 {color1}
+color9 {color9}
 
 #: red
 
-color2  #5C4F5D
-color10 #815b84
+color2  {color2}
+color10 {color10}
 
 #: green
 
-color3  #583648
-color11 #7b3c5e
+color3  {color3}
+color11 {color11}
 
 #: yellow
 
-color4  #1A5569
-color12 #197291
+color4  {color4}
+color12 {color12}
 
 #: blue
 
-color5  #B37888
-color13 #fc88a7
+color5  {color5}
+color13 {color13}
 
 #: magenta
 
-color6  #3C7489
-color14 #419cbe
+color6  {color6}
+color14 {color14}
 
 #: cyan
 
-color7  #a9bcc3
-color15 #e0f9ff
+color7  {color7}
+color15 {color15}
 
 #: white
 
@@ -1279,11 +1279,11 @@ color15 #e0f9ff
 
 #: Color for marks of type 3 (violet)
 
-#: }}}
+#: }}}}}}
 
-#: }}}
+#: }}}}}}
 
-#: Advanced {{{
+#: Advanced {{{{{{
 
 # shell .
 
@@ -1386,9 +1386,9 @@ listen_on unix:/tmp/kitty
 #: Listen to the specified socket for remote control connections. Note
 #: that this will apply to all kitty instances. It can be overridden
 #: by the kitty --listen-on command line option. For UNIX sockets,
-#: such as unix:${TEMP}/mykitty or unix:@mykitty (on Linux).
+#: such as unix:${{TEMP}}/mykitty or unix:@mykitty (on Linux).
 #: Environment variables are expanded and relative paths are resolved
-#: with respect to the temporary directory. If {kitty_pid} is present,
+#: with respect to the temporary directory. If {{kitty_pid}} is present,
 #: then it is replaced by the PID of the kitty process, otherwise the
 #: PID of the kitty process is appended to the value, with a hyphen.
 #: For TCP sockets such as tcp:localhost:0 a random port is always
@@ -1407,7 +1407,7 @@ listen_on unix:/tmp/kitty
 #: environment variables are expanded recursively, for example::
 
 #:     env VAR1=a
-#:     env VAR2=${HOME}/${VAR1}/b
+#:     env VAR2=${{HOME}}/${{VAR1}}/b
 
 #: The value of VAR2 will be <path to home directory>/a/b.
 
@@ -1575,9 +1575,9 @@ shell_integration enabled
 #: an "Actions" menu in the macOS global menubar. Sub-menus can be
 #: created by adding more levels separated by ::.
 
-#: }}}
+#: }}}}}}
 
-#: OS specific tweaks {{{
+#: OS specific tweaks {{{{{{
 
 # wayland_titlebar_color system
 
@@ -1690,9 +1690,9 @@ linux_display_server wayland
 #: to x11 or wayland to force the choice. Changing this option by
 #: reloading the config is not supported.
 
-#: }}}
+#: }}}}}}
 
-#: Keyboard shortcuts {{{
+#: Keyboard shortcuts {{{{{{
 
 #: Keys are identified simply by their lowercase Unicode characters.
 #: For example: a for the A key, [ for the left square bracket key,
@@ -1810,7 +1810,7 @@ mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output
 #: cause all invocations of the hints kitten to have the --hints-
 #: offset=0 option applied.
 
-#: Clipboard {{{
+#: Clipboard {{{{{{
 
 #: Copy to clipboard
 
@@ -1850,9 +1850,9 @@ mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output
 
 #::      map kitty_mod+y new_window less @selection
 
-#: }}}
+#: }}}}}}
 
-#: Scrolling {{{
+#: Scrolling {{{{{{
 
 #: Scroll line up
 
@@ -1942,9 +1942,9 @@ mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output
 #::  Requires shell integration
 #::  <https://sw.kovidgoyal.net/kitty/shell-integration/> to work.
 
-#: }}}
+#: }}}}}}
 
-#: Window management {{{
+#: Window management {{{{{{
 
 #: New window
 
@@ -2081,9 +2081,9 @@ mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output
 
 #::  Works like focus_visible_window above, but swaps the window.
 
-#: }}}
+#: }}}}}}
 
-#: Tab management {{{
+#: Tab management {{{{{{
 
 #: Next tab
 
@@ -2138,9 +2138,9 @@ mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output
 #: rather than at the end of the tabs list, use::
 
 #:     map ctrl+t new_tab !neighbor [optional cmd to run]
-#: }}}
+#: }}}}}}
 
-#: Layout management {{{
+#: Layout management {{{{{{
 
 #: Next layout
 
@@ -2162,9 +2162,9 @@ mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output
 #: stack layout::
 
 #:     map ctrl+alt+z toggle_layout stack
-#: }}}
+#: }}}}}}
 
-#: Font sizes {{{
+#: Font sizes {{{{{{
 
 #: You can change the font size for all top-level kitty OS windows at
 #: a time or only the current one.
@@ -2199,9 +2199,9 @@ mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output
 #: size::
 
 #:     map kitty_mod+f6 change_font_size current 10.0
-#: }}}
+#: }}}}}}
 
-#: Select and act on visible text {{{
+#: Select and act on visible text {{{{{{
 
 #: Use the hints kitten to select text and either pass it to an
 #: external program or insert it into the terminal or copy it to the
@@ -2267,9 +2267,9 @@ mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output
 #: The hints kitten has many more modes of operation that you can map
 #: to different shortcuts. For a full description see hints kitten
 #: <https://sw.kovidgoyal.net/kitty/kittens/hints/>.
-#: }}}
+#: }}}}}}
 
-#: Miscellaneous {{{
+#: Miscellaneous {{{{{{
 
 #: Show documentation
 
@@ -2348,17 +2348,17 @@ mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output
 
 #::  .. code-block:: sh
 
-#::      clear-only-screen() {
+#::      clear-only-screen() {{
 #::          printf "\e[H\e[2J"
-#::      }
+#::      }}
 
-#::      clear-screen-and-scrollback() {
+#::      clear-screen-and-scrollback() {{
 #::          printf "\e[H\e[3J"
-#::      }
+#::      }}
 
-#::      clear-screen-saving-contents-in-scrollback() {
+#::      clear-screen-saving-contents-in-scrollback() {{
 #::          printf "\e[H\e[22J"
-#::      }
+#::      }}
 
 #::  For instance, using these escape codes, it is possible to remap
 #::  Ctrl+L to both scroll the current screen contents into the
@@ -2367,11 +2367,11 @@ mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output
 
 #::  .. code-block:: zsh
 
-#::      ctrl_l() {
+#::      ctrl_l() {{
 #::          builtin print -rn -- $'\r\e[0J\e[H\e[22J' >"$TTY"
 #::          builtin zle .reset-prompt
 #::          builtin zle -R
-#::      }
+#::      }}
 #::      zle -N ctrl_l
 #::      bindkey '^l' ctrl_l
 
@@ -2458,7 +2458,7 @@ mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output
 
 # map cmd+q quit
 
-#: }}}
+#: }}}}}}
 
-#: }}}
+#: }}}}}}
 

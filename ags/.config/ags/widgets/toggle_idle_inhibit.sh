@@ -15,6 +15,10 @@ disable_idle_inhibit() {
     fi
 }
 
+if [[ ! -p $PIPE ]]; then
+  exit
+fi
+
 enabled=0
 if [[ -f $LOCKFILE && -n $(ps -p $(cat $LOCKFILE) -o pid=) ]]; then
   disable_idle_inhibit
@@ -23,14 +27,11 @@ else
   if [[ -f $LOCKFILE ]]; then
     rm $LOCKFILE
   fi
-  enable_idle_inhibit
+  enable_idle_inhibit & disown
   enabled=1
   echo "Idle inhibit enabled"
 fi
+echo $enabled > $PIPE
 
-if [[ -p $PIPE ]]; then
-  echo "Sending signal"
-  echo $enabled > $PIPE
-fi
 
 exit

@@ -49,16 +49,18 @@ const sinkIcon = () => Widget.Label({
   class_name: 'icon',
   binds: [['label', sinkState, 'value', ({ sinkMuted }) => {
     if (sinkMuted) {
-      return '';
+      return '󰖁';
     }
-    return '';
+    return '󰕾';
   }
   ]]
 });
 
 const sinkText = () => Widget.Label({
   binds: [['label', sinkState, 'value', ({ sinkVolume }) => {
-    return sinkVolume.toFixed(0).padStart(3, ' ') + '%';
+    let formattedStr = sinkVolume.toFixed(0) + '%';
+    formattedStr = formattedStr.padEnd(3, ' ');
+    return formattedStr
   }
   ]]
 });
@@ -69,14 +71,16 @@ const sourceIcon = () => Widget.Label({
     if (sourceMuted) {
       return '';
     }
-    return '';
+    return '󰍬';
   }
   ]]
 });
 
 const sourceText = () => Widget.Label({
   binds: [['label', sourceState, 'value', ({ sourceVolume }) => {
-    return sourceVolume.toFixed(0).padStart(3, ' ') + '%';
+    let formattedStr = sourceVolume.toFixed(0) + '%';
+    formattedStr = formattedStr.padEnd(3, ' ');
+    return formattedStr
   }
   ]]
 });
@@ -91,7 +95,10 @@ const sinkLabel = () => Widget.EventBox({
   on_scroll_down: () => {
     Utils.execAsync('wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- -l 1').catch(print);
   },
-  child: Widget.Box({children: [sinkIcon(), sinkText()]})
+  child: Widget.Box({
+    class_name: 'sink',
+    children: [sinkIcon(), sinkText()]
+  })
 });
 
 const sourceLabel = () => Widget.EventBox({
@@ -104,7 +111,10 @@ const sourceLabel = () => Widget.EventBox({
   on_scroll_down: () => {
     Utils.execAsync('wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%- -l 1').catch(print);
   },
-  child: Widget.Box({children: [sourceIcon(), sourceText()]})
+  child: Widget.Box({
+    class_name: 'source',
+    children: [sourceIcon(), sourceText()]
+  })
 });
 
 const widget = () => Widget.Box({

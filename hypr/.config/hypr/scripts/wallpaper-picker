@@ -2,13 +2,111 @@
 #vim: set ft=sh:
 
 WALLPAPER_DIR="$HOME/Pictures/wallpapers"
+HISTORY_FILE="$HOME/.wallpaper_history"
+touch "$HISTORY_FILE"
 
-SELECTED_WALLPAPER=$(exa -f "$WALLPAPER_DIR" | rofi -dmenu -p "Choose a wallpaper" -config ~/.cache/wal/colors-rofi-dark.rasi)
+ALPHA=100
+SELECTED_WALLPAPER=""
+
+update_history() {
+    local selection=$1
+    declare -A wallpaper_history
+
+    while read -r name count active alpha; do
+        wallpaper_history["$name"]="$count $active $alpha"
+    done < "$HISTORY_FILE"
+
+    for name in "${!wallpaper_history[@]}"; do
+        if [[ $name == "$selection" ]]; then
+            read -r count _ alpha <<< "${wallpaper_history[$name]}"
+            ((count++))
+            wallpaper_history["$name"]="$count 1 $alpha"
+        else
+            read -r count _ alpha <<< "${wallpaper_history[$name]}"
+            wallpaper_history["$name"]="$count 0 $alpha"
+        fi
+    done
+
+    if [[ ! ${wallpaper_history[$selection]} ]]; then
+        wallpaper_history["$selection"]="1 1 100"
+    fi
+
+    > "$HISTORY_FILE"
+    for name in "${!wallpaper_history[@]}"; do
+        echo "$name ${wallpaper_history[$name]}" >> "$HISTORY_FILE"
+    done
+    ALPHA=${wallpaper_history[$selection]}
+    read -r _ _ ALPHA <<< "${wallpaper_history[$selection]}"
+}
+
+if [ "$1" = "-a" ]; then
+  declare -A wallpaper_history
+
+  ALPHA=$(echo "" | rofi -dmenu -p "Enter alpha value (0-100)" -theme-str "listview { enabled: false; }")
+  if [ -z "$ALPHA" || "$ALPHA" -lt 0 || "$ALPHA" -gt 100 ]; then
+    exit 0
+  fi
+  while read -r name count active alpha; do
+    if [[ $active == "1" ]]; then
+      wallpaper_history["$name"]="$count 1 $ALPHA"
+      SELECTED_WALLPAPER="$name"
+    else
+      wallpaper_history["$name"]="$count 0 $alpha"
+    fi
+  done < "$HISTORY_FILE"
+
+  > "$HISTORY_FILE"
+  for name in "${!wallpaper_history[@]}"; do
+    echo "$name ${wallpaper_history[$name]}" >> "$HISTORY_FILE"
+  done
+fi
+
+get_sorted_options() {
+    exa -f "$WALLPAPER_DIR" | while read -r line; do
+        count=$(grep "$line" "$HISTORY_FILE" | awk '{print $2}')
+        echo "${count:-0} $line"
+    done | sort -rn | cut -d' ' -f2-
+}
+
+
+if [[ "$SELECTED_WALLPAPER" == "" ]]; then
+  SELECTED_WALLPAPER=$(get_sorted_options | rofi -dmenu -p "Choose a wallpaper")
+  update_history "$SELECTED_WALLPAPER"
+fi
+
+reload_gtk_theme() {
+  theme=$(gsettings get org.gnome.desktop.interface gtk-theme)
+  gsettings set org.gnome.desktop.interface gtk-theme ''
+  gsettings set org.gnome.desktop.interface gtk-theme $theme
+}
 
 
 if [ -n "$SELECTED_WALLPAPER" ]; then
   WALLPAPER_PATH="$WALLPAPER_DIR/$SELECTED_WALLPAPER"
-  swww img "$WALLPAPER_PATH"
+  if ! wpg -l | grep -q "$WALLPAPER_PATH"; then
+    echo "Adding wallpaper to wpg"
+    wpg -a "$WALLPAPER_PATH"
+    wpg -A "$SELECTED_WALLPAPER"
+  fi
+  swww img "$WALLPAPER_PATH" --transition-step 20 --transition-fps 255
+  wpg -s "$SELECTED_WALLPAPER" --alpha "$ALPHA"
 
-  wal -i "$WALLPAPER_PATH"
+  if pgrep -x "kitty" > /dev/null; then
+    pkill -SIGUSR1 kitty
+  fi
+
+  if pgrep -x "cava" > /dev/null; then
+    pkill -USR2 cava
+  fi
+
+  for neovide_socket in /tmp/neovide_*.socket; do
+    nvim --server $neovide_socket --remote-expr "luaeval('Colors.load()')"
+  done
+
+  if pgrep -x "ags" > /dev/null; then
+    ags -q
+  fi
+  ags &
+
+  reload_gtk_theme
 fi

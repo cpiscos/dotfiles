@@ -9,9 +9,17 @@ const persistentWorkspace = {
 };
 
 const classToIcon = {
-  'kitty': '',
-  'brave-browser': '',
-  'com.obsproject.Studio': '',
+  'kitty': '',
+  'Alacritty': '',
+  'brave-browser': '󰖟',
+  'com.obsproject.Studio': '󰯜',
+  'neovide': '',
+  'firefox': '',
+};
+
+const titleReplacements = {
+  ' — Brave': '',
+  ' — Mozilla Firefox': '',
 };
 
 async function init() {
@@ -67,7 +75,7 @@ initLabels();
 
 
 const focusedTitleIcon = (monitor) => Widget.Label({
-  class_name: 'icon',
+  // class_name: 'icon',
   label: '',
   binds: [['label', states[Hyprland.monitors[monitor].name], 'value', value => {
     if (value.class in classToIcon) {
@@ -77,17 +85,31 @@ const focusedTitleIcon = (monitor) => Widget.Label({
     } else {
       return value.class + ': ';
     }
-  }]],
+  }],
+    ['class_name', states[Hyprland.monitors[monitor].name], 'value', value => {
+      if (value.class in classToIcon) {
+        return 'icon';
+      } else {
+        return '';
+      }
+    }
+  ]],
 });
 
 const focusedTitleText = (monitor) => Widget.Label({
   label: '',
   binds: [['label', states[Hyprland.monitors[monitor].name], 'value', value => {
-    return value.title;
+    for (const [key, val] of Object.entries(titleReplacements)) {
+      if (value.title.includes(key)) {
+        return value.title.replace(key, val);
+      }
+    }
+    return value.title
   }]],
 });
 
 const focusedTitle = (monitor) => Widget.Box({
+  class_name: 'focused-title',
   children: [focusedTitleIcon(monitor), focusedTitleText(monitor)],
 });
 
@@ -98,8 +120,8 @@ const Workspaces = (monitor) => Widget.EventBox({
   on_scroll_down: () => dispatch('-1'),
   child: Widget.Box({
     children: Array.from({ length: 10 }, (_, i) => i + 1).map(i => Widget.Button({
-      label: "",
-      class_name: 'workspace-button',
+      label: '',
+      class_name: 'workspace-button fa-regular',
       setup: btn => btn.id = i,
       on_clicked: () => dispatch(i),
     })),
@@ -112,8 +134,10 @@ const Workspaces = (monitor) => Widget.EventBox({
       btn.visible = persistentWorkspace[btn.monitorName].includes(btn.id);
       if (btn.id === Hyprland.monitors[monitor].activeWorkspace.id) {
         btn.toggleClassName('active', true);
+        btn.label = '';
       } else {
         btn.toggleClassName('active', false);
+        btn.label = '';
       }
     })],
     ],

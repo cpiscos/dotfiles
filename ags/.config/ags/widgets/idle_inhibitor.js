@@ -18,7 +18,7 @@ const label = () => Widget.Label({
 });
 
 const widget = () => Widget.EventBox({
-  class_name: 'idle_inhibitor',
+  class_name: 'idle-inhibitor',
   on_primary_click: () => {
     Utils.execAsync(App.configDir + '/widgets/toggle_idle_inhibit.sh').catch(print);
   },

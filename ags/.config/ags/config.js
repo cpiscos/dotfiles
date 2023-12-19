@@ -11,7 +11,7 @@ const Bar = (/** @type {number} */ monitor) => Widget.Window({
   monitor,
   name: `bar${monitor}`,
   anchor: ['top', 'left', 'right'],
-  exclusivity: 'exclusive',
+  exclusivity: 'normal',
   child: Widget.CenterBox({
     start_widget: Widget.Box({
       class_name: 'start-widget',
@@ -36,10 +36,10 @@ const Bar = (/** @type {number} */ monitor) => Widget.Window({
         SoundInfo.sourceLabel(),
         SystemInfo.cpuLabel(), 
         SystemInfo.memoryLabel(), 
+        SystemInfo.diskLabel(),
         DateTime.dateWidget(), 
       ],
     })
-
   })
 })
 
