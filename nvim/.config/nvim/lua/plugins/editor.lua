@@ -1,7 +1,4 @@
 return {
-  { 'deviantfero/wpgtk.vim' },
-  { 'ellisonleao/gruvbox.nvim' },
-  { 'dylanaraps/wal.vim' },
   { 'fladson/vim-kitty' },
   {
     'numToStr/Comment.nvim', lazy = false, opts = {}
