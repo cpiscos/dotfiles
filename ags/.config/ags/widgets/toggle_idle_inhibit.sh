@@ -20,9 +20,7 @@ if [[ -f $LOCKFILE ]] && ps -p $(cat $LOCKFILE) > /dev/null; then
   disable_idle_inhibit
   echo "Idle inhibit disabled"
 else
-  if [[ -f $LOCKFILE ]]; then
-    rm $LOCKFILE
-  fi
+  [[ -f $LOCKFILE ]] && rm $LOCKFILE
   enable_idle_inhibit & disown
   enabled=1
   echo "Idle inhibit enabled"
