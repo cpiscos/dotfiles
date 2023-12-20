@@ -37,14 +37,14 @@ function updateActiveLabels() {
   const workspace = Hyprland.getWorkspace(Hyprland.active.workspace.id);
   const monitor = Hyprland.monitors.find(monitor => Hyprland.active.monitor === monitor.name);
   if (!workspace) {
-    states[monitor.name].setValue({ class: '', title: 'Hyprland', address: '0x' });
+    states[monitor.name].setValue({ class: '', title: 'Hyprland'});
     return;
   }
   if (states[workspace.monitor].value.address === Hyprland.active.client.address
     && states[workspace.monitor].value.title === Hyprland.active.client.title) return;
   if (Hyprland.active.monitor !== workspace.monitor) { print('monitor not match'); return; }
   if (workspace.lastwindow === '0x0') {
-    states[workspace.monitor].setValue({ class: '', title: 'Hyprland', address: '0x' });
+    states[workspace.monitor].setValue({ class: '', title: 'Hyprland'});
     return;
   } else {
     const client = Hyprland.getClient(Hyprland.active.client.address);
@@ -133,11 +133,14 @@ const Workspaces = (monitor) => Widget.EventBox({
       }
       btn.visible = persistentWorkspace[btn.monitorName].includes(btn.id);
       if (btn.id === Hyprland.monitors[monitor].activeWorkspace.id) {
-        btn.toggleClassName('active', true);
+        btn.toggleClassName('focused', true);
         btn.label = '';
-      } else {
-        btn.toggleClassName('active', false);
+      } else if (!Hyprland.getWorkspace(btn.id)) {
+        btn.toggleClassName('focused', false);
         btn.label = '';
+      } else {
+        btn.toggleClassName('focused', false);
+        btn.label = '';
       }
     })],
     ],

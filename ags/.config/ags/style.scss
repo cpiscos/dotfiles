@@ -41,10 +41,16 @@ window {
   transition: none;
   font-weight: 100;
   min-width: 16px;
+  opacity: 0.5;
 }
 
-.active {
-  font-weight: 900;
+.focused {
+  // font-weight: 900;
+  opacity: 1;
+}
+
+.empty {
+  opacity: 0.5;
 }
 
 .icon {

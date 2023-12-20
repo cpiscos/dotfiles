@@ -1,20 +1,21 @@
 autoload -Uz compinit
-export PATH="$HOME/scripts:$PATH"
-export EDITOR=socketed_neovide.sh
+export EDITOR=socketed_neovide
 # export MANPAGER="nvim +Man!"
 # export MANWIDTH=999
 
 alias q="exit"
-alias n="socketed_neovide.sh"
+alias n="socketed_neovide"
 alias N="sudo -e"
 alias ls=exa
 alias la="exa -a"
 alias stow="stow --ignore='^(\.git|\.misc)$'"
-alias r="ranger"
 alias lg="lazygit"
+alias fm="vifm"
 alias wev="kitty wev"
+alias rt="launch_rtorrent"
+alias grep='grep --color=auto'
 function man() {
-    socketed_neovide.sh -c ":silent enew | silent Man $* | only"
+    socketed_neovide -c ":silent enew | silent Man $* | only"
 }
 function q() {
   exit
@@ -26,8 +27,6 @@ HISTSIZE=100000
 SAVEHIST=$HISTSIZE
 
 KEYTIMEOUT=5
-
-# bindkey -v
 
 HISTORY_SUBSTRING_SEARCH_PREFIXED=1
 HISTORY_SUBSTRING_SEARCH_FUZZY=1
@@ -42,9 +41,6 @@ source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source $HOME/.zsh/plugins/per-directory-history/per-directory-history.zsh
-
-# bindkey '^G' per-directory-history-toggle-history
-# bindkey -M vicmd '^G' per-directory-history-toggle-history
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
