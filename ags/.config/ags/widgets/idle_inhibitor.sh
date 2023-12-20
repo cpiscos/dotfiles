@@ -1,7 +1,7 @@
 LOCKFILE="/tmp/idle_inhibitor.lock"
 PIPE="/tmp/idle_inhibitor.pipe"
 
-if [[ -f $LOCKFILE ]]; then
+if [[ -f $LOCKFILE ]] && ps -p $(cat $LOCKFILE); then
   echo 1
 fi
 

@@ -16,7 +16,7 @@ disable_idle_inhibit() {
 }
 
 enabled=0
-if [[ -f $LOCKFILE && -n $(ps -p $(cat $LOCKFILE) -o pid=) ]]; then
+if [[ -f $LOCKFILE ]] && ps -p $(cat $LOCKFILE) > /dev/null; then
   disable_idle_inhibit
   echo "Idle inhibit disabled"
 else
@@ -29,4 +29,5 @@ else
 fi
 
 [[ -p $PIPE ]] && echo $enabled > $PIPE
+
 exit
