@@ -81,7 +81,7 @@ reload_gtk_theme() {
 }
 
 
-if [ -n "$SELECTED_WALLPAPER" ]; then
+if [[ -n "$SELECTED_WALLPAPER" ]]; then
   WALLPAPER_PATH="$WALLPAPER_DIR/$SELECTED_WALLPAPER"
   if ! wpg -l | grep -q "$WALLPAPER_PATH"; then
     echo "Adding wallpaper to wpg"
@@ -91,22 +91,17 @@ if [ -n "$SELECTED_WALLPAPER" ]; then
   swww img "$WALLPAPER_PATH" --transition-step 20 --transition-fps 255
   wpg -s "$SELECTED_WALLPAPER" --alpha "$ALPHA"
 
-  if pgrep -x "kitty" > /dev/null; then
-    pkill -SIGUSR1 kitty
-  fi
+  pgrep -x "kitty" > /dev/null && pkill -SIGUSR1 kitty
+  pgrep -x "cava" > /dev/null && pkill -USR2 cava
+  pgrep -x "ags" > /dev/null && ags -q
+  ags &
 
-  if pgrep -x "cava" > /dev/null; then
-    pkill -USR2 cava
-  fi
+  sassc "$HOME/.config/swaync/style.scss" "$HOME/.config/swaync/style.css"
+  pgrep -x "swaync" > /dev/null && swaync-client -rs
 
   for neovide_socket in /tmp/neovide_*.socket; do
     nvim --server $neovide_socket --remote-expr "luaeval('Colors.load()')"
   done
-
-  if pgrep -x "ags" > /dev/null; then
-    ags -q
-  fi
-  ags &
 
   reload_gtk_theme
 fi
