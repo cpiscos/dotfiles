@@ -1,0 +1,22 @@
+format = """
+${custom.pdh_status}\
+${custom.vifm}\
+$all\
+"""
+right_format = """
+"""
+
+[character]
+error_symbol = "[✖](bold red)"
+
+[custom.pdh_status]
+description = "Per Directory History Status"
+when = "true" 
+command = "sh -c '[ \"$_per_directory_history_is_global\" = true ] && echo [Global] || echo [Local]'"
+style = "bold red"
+
+[custom.vifm]
+description = "VIFM Indicator"
+when = "test -n \"$VIFM\""
+command = "echo '[VIFM]'"
+style = "bold red"
