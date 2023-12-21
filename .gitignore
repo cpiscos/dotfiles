@@ -5,3 +5,9 @@
 **/lazy-lock.json
 **/neovide_backtraces.log
 vifm/.config/vifm/vifminfo.json
+ags/.config/ags/_colors.scss
+ags/.config/ags/style.css
+hypr/.config/hypr/hyprland-colors.conf
+kitty/.config/kitty/kitty.conf
+nvim/.config/nvim/lua/colors-def.lua
+rofi/.config/rofi/colors.rasi
