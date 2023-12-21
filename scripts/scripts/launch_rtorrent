@@ -1,0 +1,3 @@
+#!/bin/bash
+screen -ls rtorrent || screen -dmS rtorrent rtorrent
+screen -r rtorrent

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+lowest_available=0
+for ((i=0; i<1000; i++)); do
+    if [[ ! -e /tmp/neovide_${i}.socket ]]; then
+        lowest_available=$i
+        break
+    fi
+done
+
+{
+    neovide --no-vsync --no-fork -- --listen /tmp/neovide_${lowest_available}.socket "$@" &> /dev/null
+} &> /dev/null 
+exit 0
