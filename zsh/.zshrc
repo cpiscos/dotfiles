@@ -1,5 +1,6 @@
 autoload -Uz compinit
 export EDITOR=socketed_neovide
+export PATH=$HOME/scripts:$PATH
 # export MANPAGER="nvim +Man!"
 # export MANWIDTH=999
 
@@ -11,6 +12,7 @@ alias la="exa -a"
 alias stow="stow --ignore='^(\.git|\.misc)$'"
 alias lg="lazygit"
 alias fm="vifm"
+alias lf="vifm ."
 alias wev="kitty wev"
 alias rt="launch_rtorrent"
 alias grep='grep --color=auto'
@@ -45,6 +47,7 @@ source $HOME/.zsh/plugins/per-directory-history/per-directory-history.zsh
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
+eval "$(github-copilot-cli alias -- "$0")"
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 (cat $HOME/.config/wpg/sequences &)
