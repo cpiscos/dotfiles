@@ -42,7 +42,7 @@ function updateActiveLabels() {
   }
   if (states[workspace.monitor].value.address === Hyprland.active.client.address
     && states[workspace.monitor].value.title === Hyprland.active.client.title) return;
-  if (Hyprland.active.monitor !== workspace.monitor) { print('monitor not match'); return; }
+  if (Hyprland.active.monitor.name !== workspace.monitor) { print('monitor not match'); return; }
   if (workspace.lastwindow === '0x0') {
     states[workspace.monitor].setValue({ class: '', title: 'Hyprland'});
     return;
