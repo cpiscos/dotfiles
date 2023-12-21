@@ -1,5 +1,12 @@
 return {
-  { 'fladson/vim-kitty' },
+  {
+    'tpope/vim-surround',
+    config = function()
+      vim.g["surround_no_mappings"] = 1
+      vim.keymap.set("x", "gs", "<Plug>VSurround")
+      vim.keymap.set("x", "gS", "<Plug>VgSurround")
+    end
+  },
   {
     'numToStr/Comment.nvim', lazy = false, opts = {}
   },
@@ -10,6 +17,7 @@ return {
       leap.add_default_mappings()
     end
   },
+  { 'fladson/vim-kitty' },
   {
     'mikesmithgh/kitty-scrollback.nvim',
     enabled = true,
