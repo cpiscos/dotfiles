@@ -17,3 +17,10 @@ wpg/.config/wpg/wallpapers
 wpg/.config/wpg/.current
 wpg/.config/wpg/wp_init.sh
 wpg/.config/wpg/samples
+wpg/.config/wpg/templates/_colors.scss
+wpg/.config/wpg/templates/cava_config
+cava/.config/cava/config
+wpg/.config/wpg/templates/colors-def.lua
+wpg/.config/wpg/templates/colors.conf
+wpg/.config/wpg/templates/hyprland-colors.conf
+wpg/.config/wpg/sequences
