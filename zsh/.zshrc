@@ -16,6 +16,7 @@ alias lf="vifm ."
 alias wev="kitty wev"
 alias rt="launch_rtorrent"
 alias grep='grep --color=auto'
+alias sp="spotify_player"
 function man() {
     socketed_neovide -c ":silent enew | silent Man $* | only"
 }
