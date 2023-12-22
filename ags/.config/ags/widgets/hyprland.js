@@ -75,9 +75,12 @@ initLabels();
 
 
 const focusedTitleIcon = (monitor) => Widget.Label({
-  // class_name: 'icon',
+  class_name: 'icon',
   label: '',
   binds: [['label', states[Hyprland.monitors[monitor].name], 'value', value => {
+    if (value.class.includes('FFPWA')) {
+      return ' ';
+    } 
     if (value.class in classToIcon) {
       return classToIcon[value.class];
     } else if (value.class === '') {
@@ -101,10 +104,10 @@ const focusedTitleText = (monitor) => Widget.Label({
   binds: [['label', states[Hyprland.monitors[monitor].name], 'value', value => {
     for (const [key, val] of Object.entries(titleReplacements)) {
       if (value.title.includes(key)) {
-        return value.title.replace(key, val);
+        return value.title.replace(key, val).trim();
       }
     }
-    return value.title
+    return value.title.trim();
   }]],
 });
 
