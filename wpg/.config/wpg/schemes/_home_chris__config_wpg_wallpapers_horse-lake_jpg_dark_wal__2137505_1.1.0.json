@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/chris/.config/wpg/wallpapers/horse-lake.jpg",
+    "alpha": "85",
+
+    "special": {
+        "background": "#171822",
+        "foreground": "#ffffee",
+        "cursor": "#ffffee"
+    },
+    "colors": {
+        "color0": "#171822",
+        "color1": "#967B87",
+        "color2": "#A19A9F",
+        "color3": "#DCAB9C",
+        "color4": "#64909E",
+        "color5": "#C67D82",
+        "color6": "#5BA1A5",
+        "color7": "#ebddcf",
+        "color8": "#2b2c40",
+        "color9": "#d48ead",
+        "color10": "#e5b3d7",
+        "color11": "#ffd1b2",
+        "color12": "#71c3de",
+        "color13": "#ff8d96",
+        "color14": "#65e0e7",
+        "color15": "#ffffee"
+    }
+}

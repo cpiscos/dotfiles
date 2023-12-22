@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/chris/.config/wpg/wallpapers/anime-night-lake.jpg",
+    "alpha": "85",
+
+    "special": {
+        "background": "#14171c",
+        "foreground": "#fdffff",
+        "cursor": "#fdffff"
+    },
+    "colors": {
+        "color0": "#14171c",
+        "color1": "#0a427e",
+        "color2": "#2a5661",
+        "color3": "#1883c3",
+        "color4": "#1460a0",
+        "color5": "#71dbe5",
+        "color6": "#31c6d7",
+        "color7": "#c4c5c6",
+        "color8": "#282e39",
+        "color9": "#0455ac",
+        "color10": "#2d7587",
+        "color11": "#10adff",
+        "color12": "#0e7ddb",
+        "color13": "#7cffff",
+        "color14": "#2effff",
+        "color15": "#fdffff"
+    }
+}

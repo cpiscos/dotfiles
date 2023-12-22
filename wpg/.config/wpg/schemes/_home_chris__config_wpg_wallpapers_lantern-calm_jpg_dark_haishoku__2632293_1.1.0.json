@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/chris/.config/wpg/wallpapers/lantern-calm.jpg",
+    "alpha": "85",
+
+    "special": {
+        "background": "#161719",
+        "foreground": "#feffff",
+        "cursor": "#feffff"
+    },
+    "colors": {
+        "color0": "#161719",
+        "color1": "#cb5861",
+        "color2": "#205367",
+        "color3": "#6a384b",
+        "color4": "#306f84",
+        "color5": "#794e5c",
+        "color6": "#24394b",
+        "color7": "#c4c5c5",
+        "color8": "#2d2f33",
+        "color9": "#ff5f6e",
+        "color10": "#206f8e",
+        "color11": "#943e5e",
+        "color12": "#3296b7",
+        "color13": "#aa5873",
+        "color14": "#274a68",
+        "color15": "#feffff"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/chris/.config/wpg/wallpapers/anime-stars.png",
+    "alpha": "99",
+
+    "special": {
+        "background": "#080A15",
+        "foreground": "#ccffff",
+        "cursor": "#ccffff"
+    },
+    "colors": {
+        "color0": "#080A15",
+        "color1": "#4D4F70",
+        "color2": "#196F8B",
+        "color3": "#4E5F96",
+        "color4": "#246594",
+        "color5": "#9B79C3",
+        "color6": "#2B88AA",
+        "color7": "#9bcadd",
+        "color8": "#141a3a",
+        "color9": "#575b9d",
+        "color10": "#1595bf",
+        "color11": "#5673d1",
+        "color12": "#2285cc",
+        "color13": "#c788ff",
+        "color14": "#29b7ea",
+        "color15": "#ccffff"
+    }
+}

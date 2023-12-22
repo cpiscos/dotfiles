@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/chris/.config/wpg/wallpapers/whale.jpg",
+    "alpha": "85",
+
+    "special": {
+        "background": "#172136",
+        "foreground": "#ffffe9",
+        "cursor": "#ffffe9"
+    },
+    "colors": {
+        "color0": "#172136",
+        "color1": "#e7cbc6",
+        "color2": "#cdccff",
+        "color3": "#e1a9a1",
+        "color4": "#92b0d1",
+        "color5": "#d8bcc0",
+        "color6": "#6a9fcc",
+        "color7": "#feebd6",
+        "color8": "#253659",
+        "color9": "#ffdfd1",
+        "color10": "#cbc9ff",
+        "color11": "#ffc8b8",
+        "color12": "#a6e3ff",
+        "color13": "#ffd3e0",
+        "color14": "#75d0ff",
+        "color15": "#ffffe9"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/chris/.config/wpg/wallpapers/anime-night-red.jpg",
+    "alpha": "85",
+
+    "special": {
+        "background": "#15181b",
+        "foreground": "#fdffff",
+        "cursor": "#fdffff"
+    },
+    "colors": {
+        "color0": "#15181b",
+        "color1": "#b84455",
+        "color2": "#713554",
+        "color3": "#823967",
+        "color4": "#064269",
+        "color5": "#c6467e",
+        "color6": "#2b6e88",
+        "color7": "#c4c5c6",
+        "color8": "#2a3037",
+        "color9": "#ff4762",
+        "color10": "#9d3a6d",
+        "color11": "#b53d89",
+        "color12": "#01578f",
+        "color13": "#ff49a1",
+        "color14": "#2c94bc",
+        "color15": "#fdffff"
+    }
+}

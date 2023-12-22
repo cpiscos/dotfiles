@@ -1,0 +1,44 @@
+cursor {color15}
+active_border_color {color15}
+inactive_border_color {color0}
+bell_border_color {color1}
+active_tab_foreground   {color0}
+active_tab_background   {color15}
+inactive_tab_foreground {color15}
+inactive_tab_background {color0}
+foreground {color15}
+background {color0}
+background_opacity {color0.alpha_dec}
+
+#: black
+color0 {color0}
+color8 {color8}
+
+#: red
+color1 {color1}
+color9 {color9}
+
+#: green
+color2  {color2}
+color10 {color10}
+
+#: yellow
+color3  {color3}
+color11 {color11}
+
+#: blue
+color4  {color4}
+color12 {color12}
+
+#: magenta
+color5  {color5}
+color13 {color13}
+
+#: cyan
+color6  {color6}
+color14 {color14}
+
+#: white
+color7  {color7}
+color15 {color15}
+

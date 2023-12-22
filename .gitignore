@@ -13,3 +13,7 @@ nvim/.config/nvim/lua/colors-def.lua
 rofi/.config/rofi/colors.rasi
 cava/.config/cava/config
 kitty/.config/kitty/colors.conf
+wpg/.config/wpg/wallpapers
+wpg/.config/wpg/.current
+wpg/.config/wpg/wp_init.sh
+wpg/.config/wpg/samples

@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/chris/.config/wpg/wallpapers/anime-whale.png",
+    "alpha": "50",
+
+    "special": {
+        "background": "#0C1C2C",
+        "foreground": "#fcffff",
+        "cursor": "#fcffff"
+    },
+    "colors": {
+        "color0": "#0C1C2C",
+        "color1": "#6FAAD5",
+        "color2": "#6C8CA0",
+        "color3": "#8AB1CA",
+        "color4": "#3988C4",
+        "color5": "#A8B1B5",
+        "color6": "#5B9BCE",
+        "color7": "#e0e2e4",
+        "color8": "#163453",
+        "color9": "#7be0ff",
+        "color10": "#7bbae1",
+        "color11": "#9deaff",
+        "color12": "#39b3ff",
+        "color13": "#c3eeff",
+        "color14": "#62cbff",
+        "color15": "#fcffff"
+    }
+}

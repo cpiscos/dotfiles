@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/chris/.config/wpg/wallpapers/cat.jpg",
+    "alpha": "85",
+
+    "special": {
+        "background": "#151518",
+        "foreground": "#fefeff",
+        "cursor": "#fefeff"
+    },
+    "colors": {
+        "color0": "#151518",
+        "color1": "#56535b",
+        "color2": "#384366",
+        "color3": "#637196",
+        "color4": "#4d5b7f",
+        "color5": "#8291b9",
+        "color6": "#92bcf7",
+        "color7": "#c4c4c5",
+        "color8": "#2c2c32",
+        "color9": "#6c6081",
+        "color10": "#3e518e",
+        "color11": "#708bd3",
+        "color12": "#5670b2",
+        "color13": "#94b3ff",
+        "color14": "#a3efff",
+        "color15": "#fefeff"
+    }
+}

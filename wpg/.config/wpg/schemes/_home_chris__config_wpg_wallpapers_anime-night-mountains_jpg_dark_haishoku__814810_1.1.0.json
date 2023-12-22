@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/chris/.config/wpg/wallpapers/anime-night-mountains.jpg",
+    "alpha": "85",
+
+    "special": {
+        "background": "#17161d",
+        "foreground": "#fffdff",
+        "cursor": "#fffdff"
+    },
+    "colors": {
+        "color0": "#17161d",
+        "color1": "#6c4f88",
+        "color2": "#846f92",
+        "color3": "#d593a8",
+        "color4": "#2c2f74",
+        "color5": "#bf839f",
+        "color6": "#4c628a",
+        "color7": "#c5c4c6",
+        "color8": "#2d2b39",
+        "color9": "#8c58be",
+        "color10": "#ae7fce",
+        "color11": "#ffa7d1",
+        "color12": "#2e33a1",
+        "color13": "#ff95cd",
+        "color14": "#547bc1",
+        "color15": "#fffdff"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/chris/.config/wpg/wallpapers/anime-night-sky.jpg",
+    "alpha": "85",
+
+    "special": {
+        "background": "#070F1D",
+        "foreground": "#ffe9ea",
+        "cursor": "#ffe9ea"
+    },
+    "colors": {
+        "color0": "#070F1D",
+        "color1": "#C3536F",
+        "color2": "#4B476E",
+        "color3": "#9E4F70",
+        "color4": "#2A5194",
+        "color5": "#B9678F",
+        "color6": "#555B9F",
+        "color7": "#dcbabb",
+        "color8": "#0f2346",
+        "color9": "#ff5987",
+        "color10": "#58509a",
+        "color11": "#dc578f",
+        "color12": "#2a66cc",
+        "color13": "#ff73b9",
+        "color14": "#5e69de",
+        "color15": "#ffe9ea"
+    }
+}
