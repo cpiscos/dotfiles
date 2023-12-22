@@ -11,3 +11,5 @@ hypr/.config/hypr/hyprland-colors.conf
 kitty/.config/kitty/kitty.conf
 nvim/.config/nvim/lua/colors-def.lua
 rofi/.config/rofi/colors.rasi
+cava/.config/cava/config
+kitty/.config/kitty/colors.conf
