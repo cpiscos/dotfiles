@@ -1,3 +1,4 @@
+source /etc/profile.d/google-cloud-cli.sh
 autoload -Uz compinit
 export EDITOR=socketed_neovide
 export PATH=$HOME/scripts:$PATH
@@ -17,6 +18,7 @@ alias wev="kitty wev"
 alias rt="launch_rtorrent"
 alias grep='grep --color=auto'
 alias sp="spotify_player"
+alias wtr="curl 'wttr.in/Las+Vegas?u'"
 function man() {
     socketed_neovide -c ":silent enew | silent Man $* | only"
 }
