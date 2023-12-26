@@ -4,6 +4,8 @@ return {
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
+      "nvimtools/none-ls.nvim",
+      "jay-babu/mason-null-ls.nvim",
       "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
@@ -74,6 +76,12 @@ return {
           })
         end
       end
+      require("null-ls").setup()
+      require('mason-null-ls').setup({
+        ensure_installed = { 'prettier' },
+        automatic_installation = true, -- You can still set this to `true`
+        handlers = {},
+      })
     end
   },
 }
