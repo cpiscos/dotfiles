@@ -37,6 +37,10 @@ local options = {
 	breakindentopt = "shift:2,min:20", -- set to autoindent if breakindent is set
 	fillchars = { horiz = "─", vert = "│" }, -- change the characters used to fill vertical and horizontal lines
 
+  foldmethod = "expr",
+  foldexpr = "nvim_treesitter#foldexpr()",
+  foldenable = false,
+  foldlevel = 99,
 }
 
 for k, v in pairs(options) do
