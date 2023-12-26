@@ -9,6 +9,6 @@ for ((i=0; i<1000; i++)); do
 done
 
 {
-    neovide --no-vsync --no-fork -- --listen /tmp/neovide_${lowest_available}.socket "$@" &> /dev/null
-} &> /dev/null 
+  neovide --no-vsync --no-fork -- --listen /tmp/neovide_${lowest_available}.socket "$@"
+} &> /dev/null
 exit 0
