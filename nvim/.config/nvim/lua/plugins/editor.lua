@@ -13,8 +13,7 @@ return {
   {
     'ggandor/leap.nvim',
     config = function()
-      local leap = require('leap')
-      leap.add_default_mappings()
+      require('leap').add_default_mappings()
     end
   },
   { 'fladson/vim-kitty' },
