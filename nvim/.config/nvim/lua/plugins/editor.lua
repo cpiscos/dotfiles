@@ -52,5 +52,10 @@ return {
       })
     end,
     build = ":TSUpdate"
+  },
+  {
+    'folke/neodev.nvim',
+    opts = {}
+  },
   }
 }
