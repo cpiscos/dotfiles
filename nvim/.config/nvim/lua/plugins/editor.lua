@@ -57,5 +57,14 @@ return {
     'folke/neodev.nvim',
     opts = {}
   },
+  {
+    'simnalamburt/vim-mundo',
+    config = function()
+      vim.keymap.set("n", "<leader>u", ":MundoToggle<CR>")
+      vim.g["mundo_width"] = 30
+      vim.g["mundo_preview_bottom"] = 1
+      vim.g["mundo_preview_height"] = 20
+      vim.g["mundo_close_on_revert"] = 1
+    end
   }
 }
