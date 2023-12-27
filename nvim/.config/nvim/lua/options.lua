@@ -46,3 +46,6 @@ local options = {
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
+
+vim.api.nvim_set_keymap("n", "<leader>ww", ":set wrap!<CR>", { noremap = true, silent = true })
+
