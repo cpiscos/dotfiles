@@ -35,9 +35,9 @@ const states = Object.keys(persistentWorkspace).reduce(
 function updateActiveLabels() {
   if (Hyprland.active.client.address === '') return;
   const workspace = Hyprland.getWorkspace(Hyprland.active.workspace.id);
-  const monitor = Hyprland.monitors.find(monitor => Hyprland.active.monitor === monitor.name);
-  if (!monitor) return;
   if (!workspace) {
+    const monitor = Hyprland.monitors.find(monitor => Hyprland.active.monitor === monitor.name);
+    if (!monitor) return;
     states[monitor.name].setValue({ class: '', title: 'Hyprland'});
     return;
   }
