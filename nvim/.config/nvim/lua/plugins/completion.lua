@@ -108,8 +108,9 @@ return {
             },
           },
         })
-        vim.keymap.set("i", "<S-Tab>", require("copilot.suggestion").accept_word, { desc = "Copilot Suggest" })
-        vim.keymap.set("i", "<C-Tab>", require("copilot.suggestion").accept_line, { desc = "Copilot Suggest" })
+        vim.keymap.set("i", "<S-Tab>", require("copilot.suggestion").accept_word, { desc = "Copilot Accept Word"})
+        vim.keymap.set("i", "<C-Tab>", require("copilot.suggestion").accept_line, { desc = "Copilot Accept Line"})
+        vim.keymap.set("i", "<C-S-Tab>", require("copilot.suggestion").accept, { desc = "Copilot Accept"})
       end,
     },
   }
