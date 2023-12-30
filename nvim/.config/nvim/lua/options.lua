@@ -48,6 +48,7 @@ for k, v in pairs(options) do
 end
 
 vim.api.nvim_set_keymap("n", "<leader>tw", ":set wrap!<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>th", ":set hlsearch!<CR>", { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap("n", "<leader>w", ":w<CR>", { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap("n", "<leader>bn", ":bn<CR>", { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap("n", "<leader>bp", ":bp<CR>", { noremap = true, silent = true })
