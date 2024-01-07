@@ -7,21 +7,29 @@
   font-family: "JetBrainsMono Nerd Font";
 }
 
+// .overlay {
+//   background: $color2_alpha;
+// }
+
+// .center-overlay {
+//   background: $color1_alpha;
+// }
+
 window {
   // border-bottom-left-radius: 10px;
   // border-bottom-right-radius: 10px;
   font-weight: 700;
-  color: $color7;
+  color: $color15;
   background: $color0_alpha;
-  border-bottom: 3px solid $color7;
+  border-bottom: 3px solid $color15;
 }
 
 .start-widget {
-  margin-left: 4px;
+  margin-left: 8px;
 }
 
 .end-widget {
-  margin-right: 4px;
+  margin-right: 8px;
 }
 
 
@@ -36,7 +44,7 @@ window {
 .workspace-button {
   background: transparent;
   border-color: transparent;
-  color: $color7;
+  color: $color15;
   // font-family: "Font Awesome 6 Free";
   transition: none;
   font-weight: 100;
