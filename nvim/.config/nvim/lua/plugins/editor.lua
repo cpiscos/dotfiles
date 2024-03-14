@@ -30,20 +30,12 @@ return {
     end,
   },
   {
-    "luckasRanarison/tree-sitter-hypr",
-  },
-  {
     "nvim-treesitter/nvim-treesitter",
     config = function()
       local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-      parser_config.hypr = {
-        install_info = {
-          url = "https://github.com/luckasRanarison/tree-sitter-hypr",
-          files = { "src/parser.c" },
-          branch = "master",
-        },
-        filetype = "hypr",
-      }
+      vim.filetype.add({
+        pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+      })
       require("nvim-treesitter.configs").setup({
         auto_install = true,
         ensure_installed = { "hypr" },
