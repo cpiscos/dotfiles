@@ -25,7 +25,8 @@
 "     let &vicmd = $EDITOR
 " endif
 " set vicmd=$HOME/scripts/socketed_neovide_launch.sh
-set vicmd="socketed_neovide"
+" set vicmd="socketed_neovide"
+set vicmd="nvim"
 
 " This makes vifm perform file operations on its own instead of relying on
 " standard utilities like `cp`.  While using `cp` and alike is a more universal

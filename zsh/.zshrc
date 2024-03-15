@@ -1,12 +1,14 @@
 source /etc/profile.d/google-cloud-cli.sh
 autoload -Uz compinit
-export EDITOR=socketed_neovide
-export PATH=$HOME/scripts:$PATH
+# export EDITOR=socketed_neovide
+export EDITOR=nvim
+export PATH=$HOME/scripts:$HOME/.cargo/bin:$PATH
 # export MANPAGER="nvim +Man!"
 # export MANWIDTH=999
 
 alias q="exit"
-alias n="socketed_neovide"
+# alias n="socketed_neovide"
+alias n="nvim"
 alias N="sudo -e"
 alias ls=exa
 alias la="exa -a"
@@ -19,6 +21,7 @@ alias rt="launch_rtorrent"
 alias grep='grep --color=auto'
 alias sp="spotify_player"
 alias wtr="curl 'wttr.in/Las+Vegas?u'"
+alias :q="exit"
 function man() {
     socketed_neovide -c ":silent enew | silent Man $* | only"
 }
