@@ -15,6 +15,7 @@ vim.g.mapleader = " "
 
 require("options")
 require("lazy").setup("plugins")
+require("custom")
 Colors = require("custom-colors")
 Colors.load()
 

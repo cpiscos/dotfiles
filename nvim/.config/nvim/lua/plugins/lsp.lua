@@ -18,6 +18,8 @@ return {
 
         vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { buffer = bufnr, desc = "Format" })
 
+        vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = bufnr, desc = "Rename" })
+
         -- -- vim.keymap.set("n", "<leader>vws",         -- --   vim.lsp.buf.workspace_symbol()
         -- -- end, opts)
         -- vim.keymap.set("n", "<leader>vd",         -- 	vim.diagnostic.open_float()
@@ -100,6 +102,7 @@ return {
             vim.keymap.set("n", "<leader>la", rt.code_action_group.code_action_group,
               { buffer = bufnr, desc = "Code Actions" })
             vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { buffer = bufnr, desc = "Format" })
+            vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = bufnr, desc = "Rename" })
           end,
         },
       })

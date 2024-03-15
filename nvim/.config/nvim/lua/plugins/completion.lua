@@ -10,6 +10,7 @@ return {
         "hrsh7th/cmp-cmdline",
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
+        "hrsh7th/cmp-nvim-lua",
         -- "zbirenbaum/copilot-cmp",
       },
       config = function()
@@ -45,8 +46,6 @@ return {
             { name = "path" },
             { name = "nvim_lsp" },
             { name = "luasnip" },
-
-            { name = "nvim_lua" },
           }, {
             { name = "buffer" },
           }),
@@ -83,35 +82,38 @@ return {
         })
       end,
     },
+    -- {
+    --   "zbirenbaum/copilot.lua",
+    --   cmd = "Copilot",
+    --   event = "InsertEnter",
+    --   config = function()
+    --     require("copilot").setup({
+    --       suggestion = {
+    --         enabled = true,
+    --         auto_trigger = true,
+    --         keymap = {
+    --           accept = "<C-S-Tab>",
+    --         },
+    --       },
+    --       panel = { enabled = false },
+    --       server_opts_overrides = {
+    --         settings = {
+    --           advanced = {
+    --             inlineSuggestCount = 1,
+    --             length = 20,
+    --             temperature = 0,
+    --
+    --           },
+    --         },
+    --       },
+    --     })
+    --     vim.keymap.set("i", "<S-Tab>", require("copilot.suggestion").accept_word, { desc = "Copilot Accept Word"})
+    --     vim.keymap.set("i", "<C-Tab>", require("copilot.suggestion").accept_line, { desc = "Copilot Accept Line"})
+    --     vim.keymap.set("i", "<C-S-Tab>", require("copilot.suggestion").accept, { desc = "Copilot Accept"})
+    --   end,
+    -- },
     {
-      "zbirenbaum/copilot.lua",
-      cmd = "Copilot",
-      event = "InsertEnter",
-      config = function()
-        require("copilot").setup({
-          suggestion = {
-            enabled = true,
-            auto_trigger = true,
-            -- keymap = {
-            --   accept = "<S-Tab>",
-            -- },
-          },
-          panel = { enabled = false },
-          server_opts_overrides = {
-            settings = {
-              advanced = {
-                inlineSuggestCount = 1,
-                length = 20,
-                temperature = 0,
-
-              },
-            },
-          },
-        })
-        vim.keymap.set("i", "<S-Tab>", require("copilot.suggestion").accept_word, { desc = "Copilot Accept Word"})
-        vim.keymap.set("i", "<C-Tab>", require("copilot.suggestion").accept_line, { desc = "Copilot Accept Line"})
-        vim.keymap.set("i", "<C-S-Tab>", require("copilot.suggestion").accept, { desc = "Copilot Accept"})
-      end,
-    },
+      "github/copilot.vim"
+    }
   }
 }
