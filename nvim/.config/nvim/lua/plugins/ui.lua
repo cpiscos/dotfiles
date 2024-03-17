@@ -45,6 +45,14 @@ return {
         { text = "󰌵", texthl = "DiagnosticSignHint" })
 
       require("neo-tree").setup({
+        event_handlers = {
+          {
+            event = "neo_tree_buffer_enter",
+            handler = function()
+              vim.opt_local.relativenumber=true
+            end,
+          }
+        },
         close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
         popup_border_style = "rounded",
         enable_git_status = true,
@@ -145,7 +153,7 @@ return {
           mappings = {
             ["<space>"] = {
               "toggle_node",
-              nowait = false,   -- disable `nowait` if you have existing combos starting with this char that you want to use
+              nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
             },
             ["<2-LeftMouse>"] = "open",
             ["<cr>"] = "open",
@@ -314,5 +322,6 @@ return {
 
       vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
     end
-  }
+  },
+  { 'akinsho/toggleterm.nvim', version = "*", config = true }
 }
