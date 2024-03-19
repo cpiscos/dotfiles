@@ -52,16 +52,11 @@ return {
                     runtime = {
                       version = 'LuaJIT'
                     },
-                    -- Make the server aware of Neovim runtime files
                     workspace = {
                       checkThirdParty = false,
                       library = {
                         vim.env.VIMRUNTIME
-                        -- "${3rd}/luv/library"
-                        -- "${3rd}/busted/library",
                       }
-                      -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
-                      -- library = vim.api.nvim_get_runtime_file("", true)
                     }
                   }
                 })
@@ -70,6 +65,20 @@ return {
               end
               return true
             end
+          })
+        elseif server_name == "pylsp" then
+          lspconfig.pylsp.setup({
+            on_attach = lsp_attach,
+            capabilities = lsp_capabilities,
+            settings = {
+              pylsp = {
+                plugins = {
+                  pycodestyle = {
+                    maxLineLength = 120
+                  }
+                }
+              }
+            }
           })
         else
           lspconfig[server_name].setup({
@@ -81,7 +90,7 @@ return {
       require("null-ls").setup()
       require('mason-null-ls').setup({
         ensure_installed = { 'prettier' },
-        automatic_installation = true, -- You can still set this to `true`
+        automatic_installation = true,
         handlers = {},
       })
     end
