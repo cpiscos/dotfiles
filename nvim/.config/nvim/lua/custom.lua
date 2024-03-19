@@ -1,3 +1,4 @@
+vim.api.nvim_set_keymap('n', '<leader>lr', ':LspRestart<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>tw', ':set wrap!<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>th', ':set hlsearch!<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('t', '<C-w>', '<C-\\><C-n><C-w>', { noremap = true, silent = true })
@@ -53,19 +54,18 @@ vim.api.nvim_create_autocmd('BufEnter', {
     end
   end
 })
-vim.api.nvim_set_keymap('n', '<leader>sr', ':bel sp | term npm run start<CR>', { noremap = true, silent = true })
+
 vim.api.nvim_set_keymap('v', '<leader>yy', '"+y', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>yy', '"+y', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<leader>yp', '"+p', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>yp', '"+p', { noremap = true, silent = true })
 
--- vim.api.nvim_set_keymap('t', '<leader><ESC>', '<C-\\><C-n>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('t', '<leader>tt', '<C-\\><C-n>:ToggleTerm<CR>', { noremap = true, silent = true })
+local terms = require('toggleterm.terminal')
 vim.api.nvim_set_keymap('n', '<leader>tt', '', {
   noremap = true,
   silent = true,
   callback = function()
-    local terms = require('toggleterm.terminal')
     local term = terms.get(1)
 
     if term == nil then
@@ -79,7 +79,14 @@ vim.api.nvim_set_keymap('n', '<leader>tt', '', {
     end
   end
 })
-vim.api.nvim_set_keymap('t', '<leader>lr', ':LspRestart<CR>', { noremap = true, silent = true })
+local lazygit = terms.Terminal:new({ cmd = 'lazygit', hidden = true, direction = 'float' })
+vim.api.nvim_set_keymap('n', '<leader>tg', '', {
+  noremap = true,
+  silent = true,
+  callback = function()
+    lazygit:toggle()
+  end
+})
 
 vim.api.nvim_set_keymap('n', '<C-w>r', '', {
   noremap = true,
