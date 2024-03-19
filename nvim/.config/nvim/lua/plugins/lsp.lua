@@ -13,6 +13,7 @@ return {
       require("mason-lspconfig").setup()
       local lsp_attach = function(client, bufnr)
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "Go to definition" })
+        vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = bufnr, desc = "Go to references" })
 
         vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "Hover" })
 
@@ -30,8 +31,6 @@ return {
         -- end, opts)
 
         vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code Action" })
-
-        vim.keymap.set("n", "<leader>lc", vim.lsp.buf.rename, { buffer = bufnr, desc = "Rename symbol" })
 
         vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, { buffer = bufnr, desc = "Signature help" })
       end
