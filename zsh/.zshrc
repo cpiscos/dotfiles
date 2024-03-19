@@ -1,3 +1,4 @@
+source $HOME/env
 source /etc/profile.d/google-cloud-cli.sh
 autoload -Uz compinit
 # export EDITOR=socketed_neovide
@@ -58,3 +59,27 @@ eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 (cat $HOME/.config/wpg/sequences &)
 
+
+function auto_activate_venv() {
+    local project_root="$PWD"
+    local venv_path=""
+
+    while [[ $project_root != '/' ]]; do
+        if [[ -f "$project_root/.venv" || -d "$project_root/.venv" ]]; then
+            venv_path="$project_root/.venv/bin/activate"
+            break
+        elif [[ -d "$project_root/venv" ]]; then
+            venv_path="$project_root/venv/bin/activate"
+            break
+        fi
+        project_root=$(dirname "$project_root")
+    done
+
+    if [[ -n $venv_path && -z $VIRTUAL_ENV ]]; then
+        source "$venv_path"
+    elif [[ -n $VIRTUAL_ENV && -z $venv_path ]]; then
+        deactivate
+    fi
+}
+
+add-zsh-hook chpwd auto_activate_venv
