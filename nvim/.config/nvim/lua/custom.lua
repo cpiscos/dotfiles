@@ -1,13 +1,13 @@
-vim.api.nvim_set_keymap('n', '<leader>lr', ':LspRestart<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>pr', ':LspRestart<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>tw', ':set wrap!<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>th', ':set hlsearch!<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('t', '<C-w>', '<C-\\><C-n><C-w>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>bn', ':bn<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>bp', ':bp<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>bl', ':ls<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>bd', ':bd<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>bc', ':bd<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>bs', ':ls<CR>:b<Space>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-w>d', ':q<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-w>q', ':q<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>ts', '', {
   noremap = true,
   silent = true,
@@ -47,10 +47,10 @@ vim.api.nvim_create_autocmd('BufEnter', {
     if vim.bo.buftype == 'terminal' then
       vim.cmd('startinsert')
 
-      -- local esc_key = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
-      -- vim.defer_fn(function()
-      --   vim.api.nvim_feedkeys(esc_key, 'n', true)
-      -- end, 100)
+      local esc_key = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
+      vim.defer_fn(function()
+        vim.api.nvim_feedkeys(esc_key, 'n', true)
+      end, 10)
     end
   end
 })
@@ -97,6 +97,10 @@ vim.api.nvim_set_keymap('n', '<C-w>r', '', {
       j = function() vim.cmd('resize +1') end,
       k = function() vim.cmd('resize -1') end,
       l = function() vim.cmd('vertical resize +1') end,
+      ['<C-h>'] = function() vim.cmd('vertical resize -5') end,
+      ['<C-j>'] = function() vim.cmd('resize +5') end,
+      ['<C-k>'] = function() vim.cmd('resize -5') end,
+      ['<C-l>'] = function() vim.cmd('vertical resize +5') end,
     }
 
     for key, action in pairs(resize_mappings) do
@@ -106,15 +110,17 @@ vim.api.nvim_set_keymap('n', '<C-w>r', '', {
         callback = action
       })
     end
+    print('Resize mode enabled (press enter to disable)')
 
-    vim.api.nvim_set_keymap('n', '<ESC>', '', {
+    vim.api.nvim_set_keymap('n', '<CR>', '', {
       noremap = true,
       silent = true,
       callback = function()
         for key, _ in pairs(resize_mappings) do
           vim.api.nvim_del_keymap('n', key)
         end
-        vim.api.nvim_del_keymap('n', '<ESC>')
+        vim.api.nvim_del_keymap('n', '<CR>')
+        print('Resize mode disabled')
       end
     })
   end
