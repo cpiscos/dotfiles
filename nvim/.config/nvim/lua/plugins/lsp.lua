@@ -1,3 +1,17 @@
+local lsp_attach_ = function(bufnr)
+  local telescope = require("telescope.builtin")
+  vim.keymap.set("n", "gd", telescope.lsp_definitions, { buffer = bufnr, desc = "Go to definition" })
+  vim.keymap.set("n", "gr", telescope.lsp_references, { buffer = bufnr, desc = "Go to references" })
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "Hover" })
+  vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format, { buffer = bufnr, desc = "Format" })
+  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr, desc = "Rename" })
+  vim.keymap.set("n", "<leader>df", vim.diagnostic.open_float, { buffer = bufnr, desc = "Diagnostic" })
+  vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code Action" })
+  vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, { buffer = bufnr, desc = "Signature help" })
+  vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { buffer = bufnr, desc = "Previous diagnostic" })
+  vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { buffer = bufnr, desc = "Next diagnostic" })
+end
+
 return {
   {
     "neovim/nvim-lspconfig",
@@ -7,32 +21,15 @@ return {
       "nvimtools/none-ls.nvim",
       "jay-babu/mason-null-ls.nvim",
       "hrsh7th/cmp-nvim-lsp",
+
+      "pmizio/typescript-tools.nvim",
+      "nvim-lua/plenary.nvim",
     },
     config = function()
       require("mason").setup()
       require("mason-lspconfig").setup()
-      local lsp_attach = function(client, bufnr)
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "Go to definition" })
-        vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = bufnr, desc = "Go to references" })
-
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "Hover" })
-
-        vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { buffer = bufnr, desc = "Format" })
-
-        vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = bufnr, desc = "Rename" })
-
-        -- -- vim.keymap.set("n", "<leader>vws",         -- --   vim.lsp.buf.workspace_symbol()
-        -- -- end, opts)
-        -- vim.keymap.set("n", "<leader>vd",         -- 	vim.diagnostic.open_float()
-        -- end, opts)
-        -- vim.keymap.set("n", "[d",         -- 	vim.diagnostic.goto_next()
-        -- end, opts)
-        -- vim.keymap.set("n", "]d",         -- 	vim.diagnostic.goto_prev()
-        -- end, opts)
-
-        vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code Action" })
-
-        vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, { buffer = bufnr, desc = "Signature help" })
+      local lsp_attach = function(_, bufnr)
+        lsp_attach_(bufnr)
       end
 
       local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -40,30 +37,17 @@ return {
       local get_servers = require("mason-lspconfig").get_installed_servers
       for _, server_name in ipairs(get_servers()) do
         if server_name == "lua_ls" then
-          require 'lspconfig'.lua_ls.setup({
+          require("neodev").setup()
+          require('lspconfig').lua_ls.setup({
             on_attach = lsp_attach,
             capabilities = lsp_capabilities,
-            on_init = function(client)
-              local path = client.workspace_folders[1].name
-              if not vim.loop.fs_stat(path .. '/.luarc.json') and not vim.loop.fs_stat(path .. '/.luarc.jsonc') then
-                client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
-                  Lua = {
-                    runtime = {
-                      version = 'LuaJIT'
-                    },
-                    workspace = {
-                      checkThirdParty = false,
-                      library = {
-                        vim.env.VIMRUNTIME
-                      }
-                    }
-                  }
-                })
-
-                client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
-              end
-              return true
-            end
+            settings = {
+              Lua = {
+                completion = {
+                  callSnippet = "Replace"
+                }
+              }
+            }
           })
         elseif server_name == "pylsp" then
           lspconfig.pylsp.setup({
@@ -75,6 +59,38 @@ return {
                   pycodestyle = {
                     maxLineLength = 120
                   }
+                }
+              }
+            }
+          })
+        elseif server_name == "tsserver" then
+          require("typescript-tools").setup({
+            on_attach = function()
+              local bufnr = vim.api.nvim_get_current_buf()
+              lsp_attach_(bufnr)
+            end
+          })
+        elseif server_name == "cssls" then
+          lspconfig.cssls.setup({
+            on_attach = lsp_attach,
+            capabilities = lsp_capabilities,
+            settings = {
+              css = {
+                validate = true,
+                lint = {
+                  unknownAtRules = "ignore",
+                }
+              },
+              scss = {
+                validate = true,
+                lint = {
+                  unknownAtRules = "ignore",
+                }
+              },
+              less = {
+                validate = true,
+                lint = {
+                  unknownAtRules = "ignore",
                 }
               }
             }
@@ -95,25 +111,18 @@ return {
     end
   },
   {
-    'simrat39/rust-tools.nvim',
-    dependencies = {
-      'neovim/nvim-lspconfig',
-      'nvim-lua/plenary.nvim',
-      'mfussenegger/nvim-dap',
-    },
-    config = function()
-      local rt = require('rust-tools')
-      rt.setup({
+    'mrcjkb/rustaceanvim',
+    ft = { 'rust' },
+    init = function()
+      vim.g.rustaceanvim = {
         server = {
           on_attach = function(_, bufnr)
-            vim.keymap.set("n", "K", rt.hover_actions.hover_actions, { buffer = bufnr, desc = "Hover" })
-            vim.keymap.set("n", "<leader>la", rt.code_action_group.code_action_group,
-              { buffer = bufnr, desc = "Code Actions" })
-            vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { buffer = bufnr, desc = "Format" })
-            vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = bufnr, desc = "Rename" })
-          end,
-        },
-      })
-    end
+            lsp_attach_(bufnr)
+            vim.keymap.set("n", "<leader>la", function() vim.cmd.RustLsp('codeAction') end,
+              { buffer = bufnr, desc = "Code Action" })
+          end
+        }
+      }
+    end,
   }
 }

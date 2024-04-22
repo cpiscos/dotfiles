@@ -19,7 +19,7 @@ require("custom")
 Colors = require("custom-colors")
 Colors.load()
 
-vim.o.guifont = "JetBrainsMono Nerd Font:h12"
+-- vim.o.guifont = "JetBrainsMono Nerd Font:h12"
 if vim.g.neovide then
   vim.g.neovide_refresh_rate_idle = 120
   vim.g.neovide_refresh_rate = 1000

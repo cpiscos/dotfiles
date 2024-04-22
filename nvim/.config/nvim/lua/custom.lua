@@ -1,13 +1,25 @@
-vim.api.nvim_set_keymap('n', '<leader>pr', ':LspRestart<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '\\', ':Neotree<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '|', ':Neotree buffers<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<C-h>', '<C-w>h', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<C-j>', '<C-w>j', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<C-k>', '<C-w>k', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<C-l>', '<C-w>l', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'j', 'gj', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<A-j>', ':m .+1<CR>==', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-k>', ':m .-2<CR>==', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<leader>pr', ':LspRestart<CR>:e<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>tw', ':set wrap!<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>th', ':set hlsearch!<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('t', '<C-w>', '<C-\\><C-n><C-w>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>bn', ':bn<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>bp', ':bp<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>bl', ':ls<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>bc', ':bd<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>bs', ':ls<CR>:b<Space>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-w>q', ':q<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>qq', ':q<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>ts', '', {
   noremap = true,
   silent = true,
@@ -46,17 +58,12 @@ vim.api.nvim_create_autocmd('BufEnter', {
   callback = function()
     if vim.bo.buftype == 'terminal' then
       vim.cmd('startinsert')
-
-      local esc_key = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
-      vim.defer_fn(function()
-        vim.api.nvim_feedkeys(esc_key, 'n', true)
-      end, 10)
     end
   end
 })
 
 vim.api.nvim_set_keymap('v', '<leader>yy', '"+y', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>yy', '"+y', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>y', '"+y', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<leader>yp', '"+p', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>yp', '"+p', { noremap = true, silent = true })
 
@@ -120,8 +127,22 @@ vim.api.nvim_set_keymap('n', '<C-w>r', '', {
           vim.api.nvim_del_keymap('n', key)
         end
         vim.api.nvim_del_keymap('n', '<CR>')
+        vim.api.nvim_set_keymap('n', 'j', 'gj', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true, silent = true })
         print('Resize mode disabled')
       end
     })
   end
 })
+
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down" })
+
+local telescope = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', telescope.find_files, {})
+vim.keymap.set('n', '<leader>fg', telescope.live_grep, {})
+vim.keymap.set('n', '<leader>fb', telescope.buffers, {})
+vim.keymap.set('n', '<leader>fh', telescope.help_tags, {})
+vim.keymap.set('n', '<leader>fk', telescope.keymaps, {})
+
+

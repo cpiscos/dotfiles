@@ -1,5 +1,4 @@
 import Variable from 'resource:///com/github/Aylur/ags/variable.js';
-import { Widget } from 'resource:///com/github/Aylur/ags/widget.js';
 import App from 'resource:///com/github/Aylur/ags/app.js'
 import * as Utils from 'resource:///com/github/Aylur/ags/utils.js'
 

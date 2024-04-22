@@ -1,6 +1,5 @@
 import Variable from 'resource:///com/github/Aylur/ags/variable.js';
-import { Widget } from 'resource:///com/github/Aylur/ags/widget.js';
-import * as Utils from 'resource:///com/github/Aylur/ags/utils.js'
+import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 
 const state = Variable({ date: '', time: '' });
 const datePrefix = '';

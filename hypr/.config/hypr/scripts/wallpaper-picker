@@ -91,10 +91,10 @@ if [[ -n "$SELECTED_WALLPAPER" ]]; then
   swww img "$WALLPAPER_PATH" --transition-step 20 --transition-fps 255
   wpg -s "$SELECTED_WALLPAPER" --alpha "$ALPHA"
 
-  pgrep -x "kitty" > /dev/null && pkill -SIGUSR1 kitty
-  pgrep -x "cava" > /dev/null && pkill -USR2 cava
   pgrep -x "ags" > /dev/null && ags -q
   ags &
+  pgrep -x "cava" > /dev/null && pkill -USR2 cava
+  pgrep -x "kitty" > /dev/null && pkill -SIGUSR1 kitty
 
   sassc "$HOME/.config/swaync/style.scss" "$HOME/.config/swaync/style.css"
   pgrep -x "swaync" > /dev/null && swaync-client -rs

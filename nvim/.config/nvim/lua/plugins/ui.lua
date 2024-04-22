@@ -1,5 +1,15 @@
 return {
   {
+    'mikesmithgh/kitty-scrollback.nvim',
+    enabled = true,
+    lazy = true,
+    cmd = { 'KittyScrollbackGenerateKittens', 'KittyScrollbackCheckHealth' },
+    event = { 'User KittyScrollbackLaunch' },
+    config = function()
+      require('kitty-scrollback').setup()
+    end,
+  },
+  {
     "antosha417/nvim-lsp-file-operations",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -41,6 +51,11 @@ return {
         window = {
           position = "float",
         },
+        filesystem = {
+          filtered_items = {
+            always_show = { ".git", ".gitignore" }
+          }
+        },
         event_handlers = {
           {
             event = "neo_tree_buffer_enter",
@@ -50,7 +65,6 @@ return {
           },
         },
       })
-      vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
     end,
   }
 }

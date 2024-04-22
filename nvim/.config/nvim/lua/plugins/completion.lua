@@ -12,11 +12,26 @@ return {
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-nvim-lua",
         -- "zbirenbaum/copilot-cmp",
+        { 'tzachar/cmp-fuzzy-buffer', dependencies = { 'tzachar/fuzzy.nvim' } }
       },
       config = function()
         local cmp = require("cmp")
         require("luasnip.loaders.from_vscode").lazy_load()
         cmp.setup({
+          view = {
+
+            ---@diagnostic disable-next-line: missing-fields
+            entries = {
+              follow_cursor = true,
+            }
+          },
+          ---@diagnostic disable-next-line: missing-fields
+          formatting = {
+            format = function(_, vim_item)
+              vim_item.menu = ""
+              return vim_item
+            end,
+          },
           completion = {
             -- autocomplete = true,
             -- autocomplete = { "InsertEnter", "TextChanged" },
@@ -78,7 +93,18 @@ return {
             { name = "path" },
           }, {
             { name = "cmdline" },
-          }),
+          }
+          ),
+        })
+
+        cmp.setup.cmdline({ ":.*/", ":.*s" }, {
+          mapping = cmp.mapping.preset.cmdline(),
+          sources = cmp.config.sources({
+            { name = "path" },
+          }, {
+            { name = "cmdline" },
+          }
+          ),
         })
       end,
     },

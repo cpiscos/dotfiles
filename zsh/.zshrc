@@ -1,3 +1,5 @@
+# autoload -U promptinit && promptinit
+# autoload -U colors && colors
 source $HOME/env
 source /etc/profile.d/google-cloud-cli.sh
 autoload -Uz compinit

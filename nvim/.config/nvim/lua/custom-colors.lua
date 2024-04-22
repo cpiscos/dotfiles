@@ -1059,6 +1059,7 @@ local function get_groups()
     ["@lsp.type.type"] = { link = "@type" },
     ["@lsp.type.typeParameter"] = { link = "@type.definition" },
     ["@lsp.type.variable"] = { link = "@variable" },
+    FlashLabel = { fg = "white", bg = colors.red, bold = true },
   }
 
   for group, hl in pairs(config.overrides) do
